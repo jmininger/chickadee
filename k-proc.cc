@@ -60,8 +60,7 @@ void proc::init_user(pid_t pid, x86_64_pagetable* pt) {
 
     pagetable_ = pt;
 
-    runq_pprev_ = nullptr;
-    runq_next_ = nullptr;
+    runq_links_.reset();
 }
 
 
@@ -91,8 +90,7 @@ void proc::init_kernel(pid_t pid, void (*f)(proc*)) {
 
     pagetable_ = early_pagetable;
 
-    runq_pprev_ = nullptr;
-    runq_next_ = nullptr;
+    runq_links_.reset();
 }
 
 
